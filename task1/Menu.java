@@ -45,16 +45,14 @@ public class Menu {
                 
                 if (choice == 0)
                     break;
-                if (choice < 0 || choice > 2) 
-                {
+                if (choice < 0 || choice > 2) {
                     System.out.println("Incorrect choose!");
                     continue;
                 }
                 
                 input.nextLine();
                       
-                switch (choice)
-                {
+                switch (choice) {
                     case 1:                     
                         //----------Input data---------------
                         System.out.println("Log in:");                        
@@ -122,16 +120,14 @@ public class Menu {
                 
                 if (choice == 0)
                     break;
-                if (choice < 0 || choice > 7) 
-                {
+                if (choice < 0 || choice > 7) {
                     System.out.println("Incorrect choose!");
                     continue;
                 }
                 
                 input.nextLine();   
                 
-                switch (choice)
-                {
+                switch (choice) {
                     case 1: 
                         booksNow = BookUtil.booksOnPages(books, 10, MenuUtil.scannerInt("Page: "));
                         BookUtil.booksPrint(booksNow);
@@ -228,16 +224,14 @@ public class Menu {
                 
                 if (choice == 0)
                     break;
-                if (choice < 0 || choice > 8) 
-                {
+                if (choice < 0 || choice > 8) {
                     System.out.println("Incorrect choose!");
                     continue;
                 }
                 
                 input.nextLine();  
                 
-                switch (choice)
-                {
+                switch (choice) {
                     case 1: 
                         booksNow = BookUtil.booksOnPages(books, 10, MenuUtil.scannerInt("Page: "));
                         BookUtil.booksPrint(booksNow);
