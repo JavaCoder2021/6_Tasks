@@ -10,8 +10,7 @@ public class UserNameValidator {
         boolean validateUserName = true;
         
         for (User user : users)
-            if (user.getLogin().equals(userName))
-            {
+            if (user.getLogin().equals(userName)) {
                 validateUserName = false;
                 break;
             }
