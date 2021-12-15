@@ -62,8 +62,7 @@ public class Notebook {
         for (Note nowNote : notebooks)
             if (nowNote.getDate().toLowerCase().contains(date.toLowerCase()))
                 System.out.println(nowNote.print() + "\n");
-    }
-    
+    }    
     
     public static void findByEmail(LinkedList<Note> notebooks) {
         String email = getLine("E-mail: ");
