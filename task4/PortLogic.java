@@ -6,7 +6,7 @@ public class PortLogic {
 
 	private Random random = new Random();
 	private Ship ship;
-	private int shipCapacity = 100;
+	private int shipCapacity = 50;
 
 	public Ship addShipInPort(Port port) {
 
@@ -27,7 +27,8 @@ public class PortLogic {
 
 	public Ship removeShipFromPort(Port port) {
 
-		for (Ship ship : port.getShips()) {
+		for (ShipThread shipThread : port.getShips()) {
+			ship = shipThread.getShip();
 			if (ship.isLoadingUnloading() && ship.getLoaded() == ship.getCapacity())
 				return ship; 
 			else if (!ship.isLoadingUnloading() && ship.getLoaded() == 0)
