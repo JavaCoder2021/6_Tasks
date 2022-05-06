@@ -8,9 +8,9 @@ public class PortView {
 
 		System.out.println("\nBusy berths: " + port.getShips().size() + " of " + port.getNumberOfBerths());
 		System.out.println("Port loaded: " + port.getLoaded() + " of " + port.getCapacity());
-		for (Ship ship : port.getShips()) {
+		for (ShipThread shipThread : port.getShips()) {
 			i++;
-			System.out.println("Ship" + i + ":\t" + ship);
+			System.out.println("Ship" + i + ":\t" + shipThread.getShip());
 		}
 		
 	}
