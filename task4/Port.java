@@ -9,7 +9,6 @@ public class Port implements Serializable {
 	private final int capacity;
 	private int loaded;
 	private final int numberOfBerths;
-	private List<Ship> ships = new ArrayList<Ship>();
 	private List<ShipThread> shipThreads = new ArrayList<ShipThread>();
 
 	public Port() {
@@ -42,18 +41,13 @@ public class Port implements Serializable {
 		return numberOfBerths;
 	}
 
-	public synchronized List<Ship> getShips() {
-		return ships;
-	}
-
-	public synchronized List<ShipThread> getShipThreads() {
+	public synchronized List<ShipThread> getShips() {
 		return shipThreads;
 	}
 
 	public synchronized void addShip(Ship ship) {
 		if (ship != null) {
 			ShipThread shipThread = new ShipThread(this, ship);
-			ships.add(ship);
 			shipThreads.add(shipThread);
 			shipThread.start();
 		}
@@ -65,7 +59,6 @@ public class Port implements Serializable {
 				if (shipThread.getShip().equals(ship)) {
 					shipThread.interrupt();
 					shipThreads.remove(shipThread);
-					ships.remove(ship);
 					break;
 				}
 		}
@@ -79,7 +72,6 @@ public class Port implements Serializable {
 		result = prime * result + loaded;
 		result = prime * result + numberOfBerths;
 		result = prime * result + ((shipThreads == null) ? 0 : shipThreads.hashCode());
-		result = prime * result + ((ships == null) ? 0 : ships.hashCode());
 		return result;
 	}
 
@@ -103,17 +95,12 @@ public class Port implements Serializable {
 				return false;
 		} else if (!shipThreads.equals(other.shipThreads))
 			return false;
-		if (ships == null) {
-			if (other.ships != null)
-				return false;
-		} else if (!ships.equals(other.ships))
-			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Port [ships=" + ships + ", portLoaded=" + loaded + ", portCapacity=" + capacity + ", numberOfBerths="
+		return this.getClass().getSimpleName() + " [ships=" + shipThreads + ", portLoaded=" + loaded + ", portCapacity=" + capacity + ", numberOfBerths="
 				+ numberOfBerths + "]";
 	}
 
