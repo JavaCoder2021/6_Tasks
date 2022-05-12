@@ -11,9 +11,9 @@ public class CommandProvider {
 
 	public CommandProvider() {
 		super();
-		commands.put("view_library", new ViewLibraryCommand());
 		commands.put("logination", new LoginationCommand());
 		commands.put("registration", new RegistrationCommand());
+		commands.put("view_library", new ViewLibraryCommand());
 	}
 
 	public Command getCommand(String commandName) {
