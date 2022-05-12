@@ -5,20 +5,20 @@ import java.io.Serializable;
 public class Book implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-    private static int ID = 0;
-    private int id;
-    private String title;
-    private String author;
-    private String publisher;
-    private int year;
-    
-    public Book(String title, String author, String publisher, int year) {
-        this.id = ++ID;
-        this.title = title;
-        this.author = author;
-        this.publisher = publisher;
-        this.year = year;
-    }
+	private static int ID = 0;
+	private int id;
+	private String title;
+	private String author;
+	private String publisher;
+	private int year;
+
+	public Book(String title, String author, String publisher, int year) {
+		this.id = ++ID;
+		this.title = title;
+		this.author = author;
+		this.publisher = publisher;
+		this.year = year;
+	}
 
 	public String getTitle() {
 		return title;
@@ -101,8 +101,8 @@ public class Book implements Serializable {
 
 	@Override
 	public String toString() {
-		return this.getClass().getSimpleName() + " [id=" + id + ", title=" + title + ", author=" + author + ", publisher=" + publisher + ", year="
-				+ year + "]";
+		return this.getClass().getSimpleName() + " [id=" + id + ", title=" + title + ", author=" + author
+				+ ", publisher=" + publisher + ", year=" + year + "]";
 	}
 
 }
