@@ -1,0 +1,29 @@
+package by.epam.tasks.task1.controller.impl;
+
+import by.epam.tasks.task1.controller.Command;
+import by.epam.tasks.task1.presentation.UserActionViewer;
+import by.epam.tasks.task1.service.ServiceProvider;
+import by.epam.tasks.task1.service.UserService;
+
+public class LoginationCommand implements Command {
+
+	@Override
+	public String execute(String[] params) {
+
+      	boolean result; 
+		String login, password;
+      	
+		ServiceProvider provider = ServiceProvider.getInstance();
+		UserService userService = provider.getUserService();
+
+		login = params[1].split("=")[1];
+		password = params[2].split("=")[1];
+		
+		userService.readUsers();
+		result = userService.logination(login, password);
+
+		return UserActionViewer.registrationAnswer(result);
+
+	}
+
+}
