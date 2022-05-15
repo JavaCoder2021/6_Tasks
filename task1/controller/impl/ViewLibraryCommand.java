@@ -11,7 +11,7 @@ public class ViewLibraryCommand  implements Command {
 	@Override
 	public String execute(String[] params) {
 
-      	String result = ""; 
+      		String result = ""; 
       	
 		ServiceProvider provider = ServiceProvider.getInstance();
 		BookService bookService = provider.getBookService();
