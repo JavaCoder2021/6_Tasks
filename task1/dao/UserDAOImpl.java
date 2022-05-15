@@ -21,11 +21,8 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public Set<User> readUsers() {
 
-		try {
-			FileInputStream freader = new FileInputStream("src/by/epam/tasks/task1/source/users.dat");
-			ObjectInputStream objectInputStream = new ObjectInputStream(freader);
+		try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("src/by/epam/tasks/task1/source/users.dat"))) {
 			users = (HashSet<User>) objectInputStream.readObject();
-			freader.close();
 		} catch (FileNotFoundException e) {
 			System.out.println("File users.dat not found");
 		} catch (IOException e) {
@@ -56,12 +53,9 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public void writeUser(User newUser) {
 
-		try {
+		try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("src/by/epam/tasks/task1/source/users.dat"))) {
 			users.add(newUser);
-			FileOutputStream outStream = new FileOutputStream("src/by/epam/tasks/task1/source/users.dat");
-			ObjectOutputStream objectOutputStream = new ObjectOutputStream(outStream);
 			objectOutputStream.writeObject(users);
-			outStream.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
