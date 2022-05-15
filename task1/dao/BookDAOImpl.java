@@ -20,16 +20,11 @@ public class BookDAOImpl implements BookDAO {
 	@Override
 	public Set<Book> readBooks() {
 
-		try {
-			FileInputStream freader = new FileInputStream("src/by/epam/tasks/task1/source/books.dat");
-			ObjectInputStream objectInputStream = new ObjectInputStream(freader);
+		try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("src/by/epam/tasks/task1/source/books.dat"))) {
 			books = (HashSet<Book>) objectInputStream.readObject();
-			freader.close();
 		} catch (FileNotFoundException e) {
 			System.out.println("File books.dat not found");
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
+		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 
@@ -40,14 +35,11 @@ public class BookDAOImpl implements BookDAO {
 	@Override
 	public void writeBook(Book newBook) {
 
-		try {
+		try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("src/by/epam/tasks/task1/source/books.dat"))) {
 			books.add(newBook);
-			FileOutputStream outStream = new FileOutputStream("src/by/epam/tasks/task1/source/books.dat");
-			ObjectOutputStream objectOutputStream = new ObjectOutputStream(outStream);
 			objectOutputStream.writeObject(books);
-			outStream.close();
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			System.out.println("File books.dat not found");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
