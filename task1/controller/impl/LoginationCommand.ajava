@@ -10,7 +10,7 @@ public class LoginationCommand implements Command {
 	@Override
 	public String execute(String[] params) {
 
-      	boolean result; 
+      		boolean result; 
 		String login, password;
       	
 		ServiceProvider provider = ServiceProvider.getInstance();
