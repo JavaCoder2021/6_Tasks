@@ -25,9 +25,7 @@ public class UserDAOImpl implements UserDAO {
 			users = (HashSet<User>) objectInputStream.readObject();
 		} catch (FileNotFoundException e) {
 			System.out.println("File users.dat not found");
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
+		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 
@@ -57,7 +55,7 @@ public class UserDAOImpl implements UserDAO {
 			users.add(newUser);
 			objectOutputStream.writeObject(users);
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			System.out.println("File users.dat not found");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
