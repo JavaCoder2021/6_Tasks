@@ -14,7 +14,7 @@ public class RegistrationCommand  implements Command {
 	@Override
 	public String execute(String[] params) {
 
-      	boolean result; 
+      		boolean result; 
 		String login, password, email;
       	
 		ServiceProvider provider = ServiceProvider.getInstance();
